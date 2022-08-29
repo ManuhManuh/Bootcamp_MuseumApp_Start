@@ -32,7 +32,8 @@ namespace MuseumApp
             if (!usernameValid || !passwordValid)
                 return;
 
-            // TODO: Register player
+            // TODO(DONE): Register player
+            Database.RegisterPlayer(usernameInput.text, passwordInput.text);
 
             Login();
             ClosePopup();
@@ -40,7 +41,18 @@ namespace MuseumApp
 
         public void OnLoginClicked()
         {
-            // TODO: Check credentials
+            // TODO(DONE): Check credentials
+            var user = Database.GetUser(usernameInput.text);
+            if (user == null)
+            {
+                usernameHolderImage.color = wrongInputFieldColor;
+                passwordHolderImage.color = Color.white;
+            }
+            else if(user.Password != passwordInput.text)
+            {
+                usernameHolderImage.color = Color.white;
+                passwordHolderImage.color = wrongInputFieldColor;
+            }
 
             Login();
             ClosePopup();
@@ -48,7 +60,9 @@ namespace MuseumApp
 
         private void Login()
         {
-            // TODO
+            // TODO(DONE)
+
+            User.LogIn(usernameInput.text);
         }
 
         private void ClosePopup()

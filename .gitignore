@@ -42,3 +42,4 @@ ExportedObj/
 # Third-Party
 **/ARFoundationRemoteInstaller*
 **/AR\ Foundation\ Remote\ Loader*
+*.log
