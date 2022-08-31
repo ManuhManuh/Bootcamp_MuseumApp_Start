@@ -35,8 +35,14 @@ namespace MuseumApp
             // TODO(DONE): Register player
             Database.RegisterPlayer(usernameInput.text, passwordInput.text);
 
-            Login();
-            ClosePopup();
+            // pivot to use PlayFab register
+
+            // Login();
+            // ClosePopup();
+
+            PlayFabController.Instance.RegisterPlayFabUser(usernameInput.text, passwordInput.text, OnPlayFabUserRegistered);
+            
+
         }
 
         public void OnLoginClicked()
@@ -54,15 +60,18 @@ namespace MuseumApp
                 passwordHolderImage.color = wrongInputFieldColor;
             }
 
-            Login();
-            ClosePopup();
+            //Login();
+            //ClosePopup();
+
+            PlayFabController.Instance.LoginWithPlayfab(usernameInput.text, passwordInput.text, OnPlayFabLogin);
         }
 
-        private void Login()
+        // used to be "Login"
+        private void OnPlayFabLogin()
         {
             // TODO(DONE)
-
-            User.LogIn(usernameInput.text);
+            if(PlayFabController.Instance.successfulRegistration)
+                User.LogIn(usernameInput.text);
         }
 
         private void ClosePopup()

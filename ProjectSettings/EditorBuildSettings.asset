@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SignupPopup.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/DeletePopup.unity
+    guid: 5bc09dd713835954da609734e7abec7a
   m_configObjects: {}

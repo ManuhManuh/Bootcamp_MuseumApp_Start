@@ -8,6 +8,7 @@ namespace MuseumApp
     public class HomeScreen : MonoBehaviour
     {
         public GameObject loginButton;
+        public GameObject deleteButton;
         public TMP_Text username;
 
         public RectTransform attractionEntriesParent;
@@ -29,6 +30,14 @@ namespace MuseumApp
             Refresh();
         }
 
+        public void DeleteUser()
+        {
+
+            if (User.IsLoggedIn)
+                SceneManager.LoadScene("DeletePopup", LoadSceneMode.Additive);
+
+        }
+
         public void Refresh()
         {
             SetupUsername();
@@ -48,6 +57,7 @@ namespace MuseumApp
             }
 
             SetupUsername();
+            PlayFabController.Instance.LoginWithPlayfab();
         }
 
         private void SetupUsername()
@@ -63,10 +73,13 @@ namespace MuseumApp
             }
 
             loginButton.SetActive(false);
+            deleteButton.SetActive(true);
             username.gameObject.SetActive(true);
 
             // TODO: username.text = <NAME>;
             username.text = User.LoggedInUsername;
         }
+
+        
     }
 }

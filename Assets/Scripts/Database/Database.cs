@@ -91,6 +91,15 @@ namespace MuseumApp
             });
         }
 
+        public static void RemoveUser(string username)
+        {
+            connection.Delete<User>(username);
+            connection.Delete<UserRating>(
+                $@"DELETE * 
+                   FROM {nameof(UserRating)} 
+                   WHERE {nameof(UserRating.RatingUser)} = '{username}'");
+        }
+
         public static void ClearDatabase()
         {
             connection.DeleteAll<User>();
