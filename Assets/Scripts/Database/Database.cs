@@ -18,6 +18,8 @@ namespace MuseumApp
             connection = new SQLiteConnection(databasePath);
             connection.CreateTable<User>();
             connection.CreateTable<UserRating>();
+            // set flag to use foreign key
+            connection.Execute("PRAGMA foreign_keys = ON");
         }
 
         public static void RegisterPlayer(string userName, string password)
@@ -89,6 +91,19 @@ namespace MuseumApp
                 RatingUser = User.LoggedInUsername,
                 Rating = rating
             });
+        }
+
+        public static void DeleteUser()
+        {
+            if (!User.IsLoggedIn)
+            {
+                return;
+            }
+
+            // UserRating.RatingUser is FK on User.Username, and is set to cascade delete
+
+            connection.Delete(new User { Username = User.LoggedInUsername});
+
         }
 
         public static void ClearDatabase()

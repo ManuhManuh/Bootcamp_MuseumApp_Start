@@ -43,3 +43,4 @@ ExportedObj/
 **/ARFoundationRemoteInstaller*
 **/AR\ Foundation\ Remote\ Loader*
 *.log
+Logs/ApiUpdaterCheck.txt

@@ -47,11 +47,13 @@ namespace MuseumApp
             {
                 usernameHolderImage.color = wrongInputFieldColor;
                 passwordHolderImage.color = Color.white;
+                return;
             }
             else if(user.Password != passwordInput.text)
             {
                 usernameHolderImage.color = Color.white;
                 passwordHolderImage.color = wrongInputFieldColor;
+                return;
             }
 
             Login();
