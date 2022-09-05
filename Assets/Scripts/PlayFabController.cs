@@ -69,7 +69,7 @@ namespace MuseumApp
         public void RegisterPlayFabUser(string email, string password, Action callback = null)
         {
             var request = new RegisterPlayFabUserRequest { RequireBothUsernameAndEmail = false, Email = email, Password = password };
-            PlayFabClientAPI.RegisterPlayFabUser(request, result => OnRegistrationSuccessful(result, callback), error => OnRegistrationFailed(error, "RegisterPlayGabUser"))
+            PlayFabClientAPI.RegisterPlayFabUser(request, result => OnRegistrationSuccessful(result, callback), error => OnRegistrationFailed(error, "RegisterPlayGabUser"));
         }
 
         private void OnRegistrationSuccessful(RegisterPlayFabUserResult result, Action callback)
