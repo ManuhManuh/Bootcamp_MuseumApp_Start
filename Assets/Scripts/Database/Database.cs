@@ -7,7 +7,6 @@ using System.Linq;
 namespace MuseumApp
     {
 
-
     public static class Database 
     {
         private static string databasePath = "GameDatabase.db";
@@ -89,15 +88,6 @@ namespace MuseumApp
                 RatingUser = User.LoggedInUsername,
                 Rating = rating
             });
-        }
-
-        public static void RemoveUser(string username)
-        {
-            connection.Delete<User>(username);
-            connection.Delete<UserRating>(
-                $@"DELETE * 
-                   FROM {nameof(UserRating)} 
-                   WHERE {nameof(UserRating.RatingUser)} = '{username}'");
         }
 
         public static void ClearDatabase()

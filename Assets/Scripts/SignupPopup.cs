@@ -45,6 +45,11 @@ namespace MuseumApp
 
         }
 
+        private void OnPlayFabUserRegistered()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void OnLoginClicked()
         {
             // TODO(DONE): Check credentials
