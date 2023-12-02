@@ -86,6 +86,60 @@ namespace MuseumApp
             successfulRegistration = false;
         }
 
+        public void SubmitAcceptedTerms(int value)
+        {
+            
+        }
+
+        public void OnStatisticsUpdated(UpdatePlayerStatisticsResult updateResult)
+        {
+            Debug.Log("Successfully submitted time to PlayFab");
+        }
+
+        public void RecordButtonPressed(string pressType)
+        {
+            //PlayFabClientAPI.UpdatePlayerStatistics(new UpdatePlayerStatisticsRequest
+            //{
+            //    Statistics = new List<StatisticUpdate>
+            //{
+            //    new StatisticUpdate
+            //    {
+            //        StatisticName = pressType,
+            //         Value = pressCount
+            //    }
+            //}
+            //}, result => OnStatisticsUpdated(result), FailureCallback); ; ;
+
+            PlayFabClientAPI.WritePlayerEvent(new WriteClientPlayerEventRequest
+            {
+                EventName = "ButtonPress",
+                Body = new Dictionary<string, object>
+            {
+                { "PressType", pressType },
+        
+            }
+            },
+            (result) => Debug.Log("Press event recorded"),
+            (error) => Debug.LogError(error.GenerateErrorReport()));
+
+        }
+
+        private void FailureCallback(PlayFabError error)
+        {
+            Debug.LogWarning("Something went wrong with your API call. Here's some debug information:");
+            Debug.LogError(error.GenerateErrorReport());
+        }
+
+        public void RecordMiddlePressed()
+        {
+
+        }
+
+        public void RecordEndPressed()
+        {
+
+        }
+
     }
 }
 
