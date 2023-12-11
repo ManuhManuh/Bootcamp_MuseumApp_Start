@@ -33,6 +33,7 @@ namespace MuseumApp
                 return;
 
             // TODO(DONE): Register player
+ 
             Database.RegisterPlayer(usernameInput.text, passwordInput.text);
 
             // pivot to use PlayFab register

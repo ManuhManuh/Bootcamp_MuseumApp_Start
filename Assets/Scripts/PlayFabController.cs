@@ -130,15 +130,7 @@ namespace MuseumApp
             Debug.LogError(error.GenerateErrorReport());
         }
 
-        public void RecordMiddlePressed()
-        {
-
-        }
-
-        public void RecordEndPressed()
-        {
-
-        }
+        
 
     }
 }
